@@ -18,8 +18,8 @@ import java.util.List;
 public class Switches extends Library {
 
     private final List<AddTool> tools = Arrays.asList(
-        new AddTool(new SinglePoleSingleThrow()),
-        new AddTool(new SinglePoleDoubleThrow1to2())
+            new AddTool(new SinglePoleSingleThrow()),
+            new AddTool(new SinglePoleDoubleThrow1to2())
     );
 
     @Override

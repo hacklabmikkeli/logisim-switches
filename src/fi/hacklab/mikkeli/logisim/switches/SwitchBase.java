@@ -28,7 +28,7 @@ import java.awt.event.MouseEvent;
  * @author Ilmo Euro <ilmo.euro@gmail.com>
  */
 public abstract class SwitchBase extends InstanceFactory {
-    
+
     protected static final int SIZE = 20;
     protected static final Attribute<?> TYPE = Attributes.forOption("Type", SwitchType.values());
     protected static final int ARROW_SIZE = 3;
@@ -161,14 +161,14 @@ public abstract class SwitchBase extends InstanceFactory {
     }
 
     protected void drawArm(InstancePainter ip,
-                           Object facing,
-                           Graphics g,
-                           int x,
-                           int y,
-                           int xc,
-                           int yc,
-                           int w,
-                           int h) {
+            Object facing,
+            Graphics g,
+            int x,
+            int y,
+            int xc,
+            int yc,
+            int w,
+            int h) {
         SwitchState state = getValue(ip.getData());
         if (ip.getShowState() && state == SwitchState.Closed) {
             if (facing == Direction.EAST || facing == Direction.WEST) {
@@ -176,24 +176,23 @@ public abstract class SwitchBase extends InstanceFactory {
             } else {
                 g.drawLine(xc, y, xc, y + h);
             }
+        } else if (facing == Direction.EAST || facing == Direction.WEST) {
+            g.drawLine(x, yc, x + w, y);
         } else {
-            if (facing == Direction.EAST || facing == Direction.WEST) {
-                g.drawLine(x, yc, x + w, y);
-            } else {
-                g.drawLine(xc, y, x + w, y + h);
-            }
+            g.drawLine(xc, y, x + w, y + h);
         }
     }
-    
-	public static class SwitchPoker extends InstancePoker {
-		@Override
-		public void mousePressed(InstanceState state, MouseEvent e) {
+
+    public static class SwitchPoker extends InstancePoker {
+
+        @Override
+        public void mousePressed(InstanceState state, MouseEvent e) {
             applyActiveState(state);
-		}
-		
-		@Override
-		public void mouseReleased(InstanceState state, MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(InstanceState state, MouseEvent e) {
             applyInactiveState(state);
-		}
-	}
+        }
+    }
 }
